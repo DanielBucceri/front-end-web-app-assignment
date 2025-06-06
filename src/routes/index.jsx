@@ -3,7 +3,7 @@ import { useAuth } from "../provider/authProvider";
 import ProtectedRoute from "../components/protectedRoute";
 import Login from "../pages/Login";
 import Logout from "../pages/Logout";
-import Register from "../pages/Register";
+import Register from "../pages/Register"; 
 
 
 const Routes = () => {
