@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import api from "../services/api";
+import "../styles/auth.css";
 
 const RegisterTest = () => {
     const [username, setUsername] = useState("");
