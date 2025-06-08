@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import api from "../services/api";
+import "../styles/auth.css";
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -47,7 +48,7 @@ const Login = () => {
                     {error && <div className="error-message">{error}</div>}
                     
                     <div className="form-group">
-                        <label htmlFor="username">username</label>
+                        <label htmlFor="username">Username</label>
                         <input
                             type="username"
                             id="username"

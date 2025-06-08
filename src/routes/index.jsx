@@ -5,10 +5,9 @@ import Layout from "../components/Layout";
 import Login from "../pages/Login";
 import Logout from "../pages/Logout";
 import Register from "../pages/Register"; 
-import Dashboard from "../components/Dashboard"; 
+import Dashboard from "../pages/Dashboard"; 
 
 const Routes = () => {
-  const { token } = useAuth();
 
   const router = createBrowserRouter([
     {
@@ -16,7 +15,7 @@ const Routes = () => {
       path: '/',
       element: <Layout />,
       children: [
-        { index: true, element: <div>Home Page</div> },
+        { index: true, element: <Dashboard /> },
         { path: "login", element: <Login /> },
         { path: "register", element: <Register /> },
         {
