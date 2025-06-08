@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from "../provider/authProvider";
+import "../styles/header.css";
 
 const Header = () => {
   const { token } = useAuth();
@@ -7,7 +8,7 @@ const Header = () => {
   return (
     <header className="app-header">
       <div className="logo">
-        <img src="/pokemon-logo.png" alt="Pokemon Logo" />
+        <img src="/pokemon-logo.svg" alt="Pokemon Logo" />
         <span>Pokémon Team Builder</span>
       </div>
       
