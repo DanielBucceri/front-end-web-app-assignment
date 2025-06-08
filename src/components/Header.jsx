@@ -14,7 +14,7 @@ const Header = () => {
       
       <nav className="main-nav">
         <ul>
-          <li><Link to="/">Dashboard</Link></li>
+          <li><Link to="/dashboard">Dashboard</Link></li>
           <li><Link to="/teams">Teams</Link></li>
           <li><Link to="/builds">Builds</Link></li>
           {token && <li><Link to="/logout">Logout</Link></li>}

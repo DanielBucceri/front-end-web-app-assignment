@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import Login from "../pages/Login";
 import Logout from "../pages/Logout";
 import Register from "../pages/Register"; 
+import Dashboard from "../components/Dashboard"; 
 
 const Routes = () => {
   const { token } = useAuth();
@@ -22,8 +23,9 @@ const Routes = () => {
           // protected routes
           element: <ProtectedRoute />,
           children: [
-            { path: "dashboard", element: <div>Authenticated Dashboard!</div> },
+            { path: "dashboard", element: <Dashboard /> },
             { path: "logout", element: <Logout /> },
+            
           ],
         },
       ],
