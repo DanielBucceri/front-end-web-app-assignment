@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../provider/authProvider';
 import api from '../services/api';
+import '../styles/Builds.css';
 
 const Builds = () => {
   const { token } = useAuth();
@@ -51,6 +52,21 @@ const Builds = () => {
         </div>
       )}
       
+      {!loading && error && (
+        <div className="empty-builds error-state">
+          <h3>{error}</h3>
+          <p>There was a problem loading your builds. Please try again later.</p>
+        </div>
+      )}
+      
+      {!loading && !error && builds.length === 0 && (
+        <div className="empty-builds">
+          <h3>You don't have any Pokémon builds yet</h3>
+          <p>Create your first custom build to get started!</p>
+          <button className="create-build-btn">Create New Build</button>
+        </div>
+      )}
+      
       {!loading && !error && builds.length > 0 && (
         <div className="pokedex-grid">
           {/* Map through builds and display each as a card */}
@@ -69,37 +85,37 @@ const Builds = () => {
                 
                 <div className="pokedex-details">
                   <div className="pokedex-types">
-                    <span className="pokemon-nature">{capitalize(build.nature || '')}</span>
-                    <span className="pokemon-ability">{capitalize(build.ability || '')}</span>
+                    <span className="pokemon-nature">Nature: {capitalize(build.nature || '')}</span>
+                    <span className="pokemon-ability">Ability: {capitalize(build.ability || '')}</span>
                   </div>
                   
                   <div className="pokedex-stats">
-                    <div className="stat-bar">
-                      <span className="stat-label">HP</span>
-                      <div className="stat-bar-container">
-                        <div className="stat-fill" style={{width: `${(build.stats.hp / 255) * 100}%`}}></div>  
-                      </div>
+                  <div className="stat-bar">
+                    <span className="stat-label">HP</span>
+                    <div className="stat-bar-container">
+                      <div className="stat-fill" style={{width: `${(build.stats.hp / 255) * 100}%`}}></div>  
                     </div>
-                    <div className="stat-bar">
-                      <span className="stat-label">ATK</span>
-                      <div className="stat-bar-container">
-                        <div className="stat-fill" style={{width: `${(build.stats.attack / 255) * 100}%`}}></div>
-                      </div>
+                  </div>
+                  <div className="stat-bar">
+                    <span className="stat-label">ATK</span>
+                    <div className="stat-bar-container">
+                      <div className="stat-fill" style={{width: `${(build.stats.attack / 255) * 100}%`}}></div>
                     </div>
-                    <div className="stat-bar">
-                      <span className="stat-label">DEF</span>
-                      <div className="stat-bar-container">
-                        <div className="stat-fill" style={{width: `${(build.stats.defense / 255) * 100}%`}}></div>
-                      </div>
+                  </div>
+                  <div className="stat-bar">
+                    <span className="stat-label">DEF</span>
+                    <div className="stat-bar-container">
+                      <div className="stat-fill" style={{width: `${(build.stats.defense / 255) * 100}%`}}></div>
                     </div>
-                    <div className="stat-bar">
+                  </div>
+                    {/* <div className="stat-bar">
                       <span className="stat-label">SP-A</span>
                       <div className="stat-bar-container">
                         <div className="stat-fill" style={{width: `${(build.stats.specialAttack / 255) * 100}%`}}></div>
                       </div>
                     </div>
                     <div className="stat-bar">
-                      <span className="stat-label">SP-D</span>
+                      <span className="stat-label">SP-D: {build.stats.specialDefense} </span>
                       <div className="stat-bar-container">
                         <div className="stat-fill" style={{width: `${(build.stats.specialDefense / 255) * 100}%`}}></div>
                       </div>
@@ -109,17 +125,17 @@ const Builds = () => {
                       <div className="stat-bar-container">
                         <div className="stat-fill" style={{width: `${(build.stats.speed / 255) * 100}%`}}></div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 
                 <div className="pokedex-moves">
-                  {/* Map through moves and display */}
+                  <h4>Moves</h4>
                   {build.moves && build.moves.length > 0 && (
                     <div className="move-list">
                       {build.moves.map((move, index) => (
                         <span key={index} className="move-tag">
-                          {move ? capitalize(move) : 'Unknown Move'}
+                          {move ? capitalize(move) : 'Unknown'}
                         </span>
                       ))}
                     </div>
@@ -129,7 +145,7 @@ const Builds = () => {
               
               <div className="pokedex-buttons">
                 <button className="edit-button">Edit</button>
-                <button className="delete-button">Delete</button>
+                <button className="delete-button">×</button>
               </div>
             </div>
           ))}
