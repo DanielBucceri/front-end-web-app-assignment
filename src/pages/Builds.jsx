@@ -37,6 +37,26 @@ const Builds = () => {
     if (!str) return 'Unknown';
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
+  
+  // Handle build deletion
+  const handleDeleteBuild = async (buildId) => {
+    if (window.confirm('Are you sure you want to delete this build?')) {
+      try {
+        
+        // Configure auth header
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        
+        // Send delete request to API
+        await api.delete(`/builds/${buildId}`);
+        
+        // Remove the deleted build from state
+        setBuilds(builds.filter(build => build._id !== buildId));
+      } catch (err) {
+        console.error('Error deleting build:', err);
+        alert('Failed to delete build. Please try again.');
+      }
+    }
+  };
 
   return (
     <div className="builds-container">
@@ -61,7 +81,7 @@ const Builds = () => {
       
       {!loading && !error && builds.length === 0 && (
         <div className="empty-builds">
-          <h3>You don't have any Pokémon builds yet</h3>
+          <h3>You don't have any Pokémon builds yet!</h3>
           <p>Create your first custom build to get started!</p>
           <button className="create-build-btn">Create New Build</button>
         </div>
@@ -73,10 +93,12 @@ const Builds = () => {
           {builds.map(build => (
             <div key={build._id} className="pokedex-card">         
               <div className="pokedex-image-container">
-                {/* Pokemon image?? */}
-                <div className="pokedex-image-placeholder">
-                  <div className="pokemon-silhouette"></div>
-                </div>
+                <img
+                  className="pokemon-image"
+                  src={`https://img.pokemondb.net/artwork/${build.species.toLowerCase()}.jpg`}
+                  alt={'image of ' + build.species}
+                  onError={e => { e.target.onerror = null; e.target.src = '/fallback.svg'; }}
+                />
               </div>
               
               <div className="pokedex-info">
@@ -93,37 +115,43 @@ const Builds = () => {
                   <div className="stat-bar">
                     <span className="stat-label">HP</span>
                     <div className="stat-bar-container">
-                      <div className="stat-fill" style={{width: `${(build.stats.hp / 255) * 100}%`}}></div>  
+                      <div className="stat-fill" style={{width: `${(build.stats.hp / 255) * 100}%`}}></div>
+                      <span className="stat-value">{build.stats.hp}</span>
                     </div>
                   </div>
                   <div className="stat-bar">
                     <span className="stat-label">ATK</span>
                     <div className="stat-bar-container">
                       <div className="stat-fill" style={{width: `${(build.stats.attack / 255) * 100}%`}}></div>
+                      <span className="stat-value">{build.stats.attack}</span>
                     </div>
                   </div>
                   <div className="stat-bar">
                     <span className="stat-label">DEF</span>
                     <div className="stat-bar-container">
                       <div className="stat-fill" style={{width: `${(build.stats.defense / 255) * 100}%`}}></div>
+                      <span className="stat-value">{build.stats.defense}</span>
                     </div>
                   </div>
                     {/* <div className="stat-bar">
                       <span className="stat-label">SP-A</span>
                       <div className="stat-bar-container">
                         <div className="stat-fill" style={{width: `${(build.stats.specialAttack / 255) * 100}%`}}></div>
+                        <span className="stat-value">{build.stats.specialAttack}</span>
                       </div>
                     </div>
                     <div className="stat-bar">
-                      <span className="stat-label">SP-D: {build.stats.specialDefense} </span>
+                      <span className="stat-label">SP-D</span>
                       <div className="stat-bar-container">
                         <div className="stat-fill" style={{width: `${(build.stats.specialDefense / 255) * 100}%`}}></div>
+                        <span className="stat-value">{build.stats.specialDefense}</span>
                       </div>
                     </div>
                     <div className="stat-bar">
                       <span className="stat-label">SPEED</span>
                       <div className="stat-bar-container">
                         <div className="stat-fill" style={{width: `${(build.stats.speed / 255) * 100}%`}}></div>
+                        <span className="stat-value">{build.stats.speed}</span>
                       </div>
                     </div> */}
                   </div>
@@ -145,7 +173,10 @@ const Builds = () => {
               
               <div className="pokedex-buttons">
                 <button className="edit-button">Edit</button>
-                <button className="delete-button">×</button>
+                <button 
+                  className="delete-button" 
+                  onClick={() => handleDeleteBuild(build._id)} 
+                >×</button>
               </div>
             </div>
           ))}
