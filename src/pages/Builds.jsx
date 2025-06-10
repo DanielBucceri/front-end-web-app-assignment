@@ -177,7 +177,8 @@ const Builds = () => {
                   className="delete-button" 
                   onClick={() => handleDeleteBuild(build._id)} 
                 >×</button>
-              </div>
+                </div>
+              
             </div>
           ))}
         </div>
