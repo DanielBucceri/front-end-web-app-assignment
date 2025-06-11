@@ -8,6 +8,7 @@ import Logout from "../pages/Logout";
 import Register from "../pages/Register"; 
 import Dashboard from "../pages/Dashboard"; 
 import Builds from "../pages/Builds";
+import CreateBuild from "../pages/CreateBuild";
 
 const Routes = () => {
   const { token } = useAuth();
@@ -31,6 +32,7 @@ const Routes = () => {
           children: [
             { path: "dashboard", element: <Dashboard /> },
             { path: "builds", element: <Builds /> },
+            { path: "builds/create", element: <CreateBuild /> },
             { path: "logout", element: <Logout /> },
             
           ],

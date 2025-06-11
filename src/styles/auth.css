@@ -77,6 +77,10 @@
   text-decoration: underline;
 }
 
+.error-message {
+  color: red;
+}
+
 /* Responsive */
 @media (max-width: 640px) {
   .auth-card {

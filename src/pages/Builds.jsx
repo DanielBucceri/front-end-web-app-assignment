@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../provider/authProvider';
 import api from '../services/api';
 import '../styles/Builds.css';
@@ -61,8 +62,11 @@ const Builds = () => {
   return (
     <div className="builds-container">
       <div className="builds-header">
-        <h1>My Pokémon Builds</h1>
-        <p>View and manage your custom Pokémon builds</p>
+        <div>
+          <h1>My Pokémon Builds</h1>
+          <p>View and manage your custom Pokémon builds</p>
+        </div>
+        <Link to="/builds/create" className="create-build-btn">Create New Build</Link>
       </div>
       
       {loading && (
@@ -83,7 +87,7 @@ const Builds = () => {
         <div className="empty-builds">
           <h3>You don't have any Pokémon builds yet!</h3>
           <p>Create your first custom build to get started!</p>
-          <button className="create-build-btn">Create New Build</button>
+          <Link to="/builds/create" className="create-build-btn">Create New Build</Link>
         </div>
       )}
       
