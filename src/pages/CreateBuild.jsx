@@ -124,7 +124,6 @@ const CreateBuild = () => {
         }
       }
 
-
 return (
     <div className="auth-container">
   <div className="auth-card">
@@ -177,11 +176,11 @@ return (
       </div>
 
       <div className="form-group">
-        <label htmlFor="moves">Moves (max 4) *</label>
+        <p className="form-group-label">Moves (max 4) *</p>
         <div id="moves" name="moves" style={{ maxHeight: '150px', maxWidth: '300px', overflow: 'auto', border: '1px solid #ccc', padding: '0.5rem' }}>
           {availableMoves.map((move) => (
-            <label key={move}>
-              <input type="checkbox" disabled={moves.length >= 4 && !moves.includes(move)} onChange={(e) => handleMoveToggle(move)} />
+            <label key={move} htmlFor={`move-${move}`}>
+              <input id={`move-${move}`} type="checkbox" disabled={moves.length >= 4 && !moves.includes(move)} onChange={(e) => handleMoveToggle(move)} />
               {move}
             </label>
           ))}
@@ -189,7 +188,7 @@ return (
       </div>
 
       <div className="form-group">
-        <label htmlFor="stats">Base Stats</label>
+        <p className="form-group-label">Base Stats</p>
         <ul id="stats" name="stats" style={{ listStyle: 'none', padding: '0' }}>
           <li>HP: {stats?.hp}</li>
           <li>Attack: {stats?.attack}</li>
