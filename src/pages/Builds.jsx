@@ -22,6 +22,7 @@ const Builds = () => {
         // Get builds from API
         const response = await api.get('/builds');
         setBuilds(response.data.data);
+        
       } catch (err) {
         console.error('Error fetching builds:', err);
         setError('Failed to load your Pokémon builds');
@@ -99,10 +100,8 @@ const Builds = () => {
               <div className="pokedex-image-container">
                 <img
                   className="pokemon-image"
-                  src={`https://img.pokemondb.net/artwork/${build.species.toLowerCase()}.jpg`}
-                  alt={'image of ' + build.species}
-                  onError={e => { e.target.onerror = null; e.target.src = '/fallback.svg'; }}
-                />
+                  src={`https://play.pokemonshowdown.com/sprites/ani/${build.species.toLowerCase()}.gif`}
+                  alt={'image of ' + build.species}/>
               </div>
               
               <div className="pokedex-info">
@@ -110,7 +109,7 @@ const Builds = () => {
                 <h4 className="pokemon-species">{capitalize(build.species)}</h4>
                 
                 <div className="pokedex-details">
-                  <div className="pokedex-types">
+                  <div className="pokedex-types"> 
                     <span className="pokemon-nature">Nature: {capitalize(build.nature || '')}</span>
                     <span className="pokemon-ability">Ability: {capitalize(build.ability || '')}</span>
                   </div>
@@ -119,45 +118,45 @@ const Builds = () => {
                   <div className="stat-bar">
                     <span className="stat-label">HP</span>
                     <div className="stat-bar-container">
-                      <div className="stat-fill" style={{width: `${(build.stats.hp / 255) * 100}%`}}></div>
+                      <div className="stat-fill stat-fill-hp" style={{width: `${(build.stats.hp / 255) * 100}%`}}></div>
                       <span className="stat-value">{build.stats.hp}</span>
                     </div>
                   </div>
                   <div className="stat-bar">
                     <span className="stat-label">ATK</span>
                     <div className="stat-bar-container">
-                      <div className="stat-fill" style={{width: `${(build.stats.attack / 255) * 100}%`}}></div>
+                      <div className="stat-fill stat-fill-attack" style={{width: `${(build.stats.attack / 255) * 100}%`}}></div>
                       <span className="stat-value">{build.stats.attack}</span>
                     </div>
                   </div>
                   <div className="stat-bar">
                     <span className="stat-label">DEF</span>
                     <div className="stat-bar-container">
-                      <div className="stat-fill" style={{width: `${(build.stats.defense / 255) * 100}%`}}></div>
+                      <div className="stat-fill stat-fill-defense" style={{width: `${(build.stats.defense / 255) * 100}%`}}></div>
                       <span className="stat-value">{build.stats.defense}</span>
                     </div>
                   </div>
-                    {/* <div className="stat-bar">
+                    <div className="stat-bar">
                       <span className="stat-label">SP-A</span>
                       <div className="stat-bar-container">
-                        <div className="stat-fill" style={{width: `${(build.stats.specialAttack / 255) * 100}%`}}></div>
+                        <div className="stat-fill stat-fill-special-attack" style={{width: `${(build.stats.specialAttack / 255) * 100}%`}}></div>
                         <span className="stat-value">{build.stats.specialAttack}</span>
                       </div>
                     </div>
                     <div className="stat-bar">
                       <span className="stat-label">SP-D</span>
                       <div className="stat-bar-container">
-                        <div className="stat-fill" style={{width: `${(build.stats.specialDefense / 255) * 100}%`}}></div>
+                        <div className="stat-fill stat-fill-special-defense" style={{width: `${(build.stats.specialDefense / 255) * 100}%`}}></div>
                         <span className="stat-value">{build.stats.specialDefense}</span>
                       </div>
                     </div>
                     <div className="stat-bar">
                       <span className="stat-label">SPEED</span>
                       <div className="stat-bar-container">
-                        <div className="stat-fill" style={{width: `${(build.stats.speed / 255) * 100}%`}}></div>
+                        <div className="stat-fill stat-fill-speed" style={{width: `${(build.stats.speed / 255) * 100}%`}}></div>
                         <span className="stat-value">{build.stats.speed}</span>
                       </div>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
                 

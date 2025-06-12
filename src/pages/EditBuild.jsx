@@ -105,6 +105,7 @@ const EditBuild = () => {
             break;
         }
       });
+
       setStats(statObj);
     } catch (e) {
       setError(e.message);
@@ -157,15 +158,13 @@ const EditBuild = () => {
 return (
     <div className="auth-container">
   <div className="auth-card">
-    <h2>Edit Pokémon Build</h2>
-    <img
-                  className="pokemon-image"
-                  src={`https://img.pokemondb.net/artwork/${species.toLowerCase()}.jpg`}
-                  alt={'image of ' + species}
-                  onError={e => { e.target.onerror = null; e.target.src = '/fallback.svg'; }}
-                />
+    <h2>Edit {nickname}</h2>
     <form className="auth-form" onSubmit={handleSubmit}>
-      
+    <img
+        className="pokemon-image"
+        src={`https://play.pokemonshowdown.com/sprites/ani/${species.toLowerCase()}.gif`}
+        alt={'image of ' + species}        
+        ></img>
       <div className="error-message">{error}</div>
 
       <div className="form-group">
@@ -220,18 +219,50 @@ return (
         </div>
       </div>
 
-      <div className="form-group">
-        <p className="form-group-label">Base Stats</p>
-        <ul id="stats" name="stats" style={{ listStyle: 'none', padding: '0' }}>
-          <li>HP: {stats?.hp}</li>
-          <li>Attack: {stats?.attack}</li>
-          <li>Defense: {stats?.defense}</li>
-          <li>Sp. Atk: {stats?.specialAttack}</li>
-          <li>Sp. Def: {stats?.specialDefense}</li>
-          <li>Speed: {stats?.speed}</li>
-        </ul>
-      </div>
-
+      <div className="pokedex-stats">
+                  <div className="stat-bar">
+                    <span className="stat-label">HP</span>
+                    <div className="stat-bar-container">
+                      <div className="stat-fill stat-fill-hp" style={{width: `${(stats?.hp / 255) * 100}%`}}></div>
+                      <span className="stat-value">{stats?.hp}</span>
+                    </div>
+                  </div>
+                  <div className="stat-bar">
+                    <span className="stat-label">ATK</span>
+                    <div className="stat-bar-container">
+                      <div className="stat-fill stat-fill-attack" style={{width: `${(stats?.attack / 255) * 100}%`}}></div>
+                      <span className="stat-value">{stats?.attack}</span>
+                    </div>
+                  </div>
+                  <div className="stat-bar">
+                    <span className="stat-label">DEF</span>
+                    <div className="stat-bar-container">
+                      <div className="stat-fill stat-fill-defense" style={{width: `${(stats?.defense / 255) * 100}%`}}></div>
+                      <span className="stat-value">{stats?.defense}</span>
+                    </div>
+                  </div>
+                    <div className="stat-bar">
+                      <span className="stat-label">SP-A</span>
+                      <div className="stat-bar-container">
+                        <div className="stat-fill stat-fill-special-attack" style={{width: `${(stats?.specialAttack / 255) * 100}%`}}></div>
+                        <span className="stat-value">{stats?.specialAttack}</span>
+                      </div>
+                    </div>
+                    <div className="stat-bar">
+                      <span className="stat-label">SP-D</span>
+                      <div className="stat-bar-container">
+                        <div className="stat-fill stat-fill-special-defense" style={{width: `${(stats?.specialDefense / 255) * 100}%`}}></div>
+                        <span className="stat-value">{stats?.specialDefense}</span>
+                      </div>
+                    </div>
+                    <div className="stat-bar">
+                      <span className="stat-label">SPEED</span>
+                      <div className="stat-bar-container">
+                        <div className="stat-fill stat-fill-speed" style={{width: `${(stats?.speed / 255) * 100}%`}}></div>
+                        <span className="stat-value">{stats?.speed}</span>
+                      </div>
+                    </div>
+                  </div>
       <button type="submit" className="submit-button">Save Build</button>
     </form>
 
