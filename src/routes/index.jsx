@@ -13,6 +13,7 @@ import EditBuild from "../pages/EditBuild";
 import Teams from "../pages/Teams";
 import EditTeam from "../pages/EditTeam";
 import CreateTeam from "../pages/CreateTeam";
+import NotFound from "../pages/NotFound";
 
 const Routes = () => {
   const { token } = useAuth();
@@ -56,6 +57,8 @@ const Routes = () => {
         },
       ],
     },
+    // catch all 404 route
+    { path: "*", element: <NotFound /> },
   ]);
 
   return <RouterProvider router={router} />;
