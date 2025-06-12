@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import ProtectedRoute from "../components/protectedRoute";
 import PublicRoutes from "../components/publicRoutes";
@@ -19,6 +19,15 @@ const Routes = () => {
       path: '/',
       element: <Layout />,
       children: [
+        // Redirect root to appropriate page based on auth state
+        {
+          index: true,
+          element: token ? (
+            <Navigate to="dashboard" replace />
+          ) : (
+            <Navigate to="login" replace />
+          ),
+        },
         {
           element: <PublicRoutes />, //redirect to dashboard if user is authenticated
           children: [
