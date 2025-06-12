@@ -48,6 +48,15 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.form-group select {
+  padding: 0.75rem;
+  border: 2px solid #e1e5e9;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
 .submit-button {
   background: linear-gradient(135deg, #3b82f6 0%, #1e40af 50%, #1e3a8a 100%);
   color: white;
@@ -75,6 +84,10 @@
 
 .auth-footer a:hover {
   text-decoration: underline;
+}
+
+.error-message {
+  color: red;
 }
 
 /* Responsive */
