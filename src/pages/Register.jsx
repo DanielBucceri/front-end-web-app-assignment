@@ -4,7 +4,7 @@ import { useAuth } from "../provider/authProvider";
 import api from "../services/api";
 import "../styles/auth.css";
 
-const RegisterTest = () => {
+const Register = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -98,4 +98,4 @@ const RegisterTest = () => {
     );
 };
 
-export default RegisterTest;
+export default Register;
