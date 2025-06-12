@@ -13,7 +13,7 @@ const NATURES = [
     "Calm","Gentle","Sassy","Careful","Quirky"
   ];
 
-const CreateBuild = () => {
+const EditBuild = () => {
     const { token } = useAuth();
     const navigate = useNavigate();
 
@@ -23,15 +23,14 @@ const CreateBuild = () => {
     const [ability, setAbility] = useState("");
     const [moves, setMoves] = useState([]);
     const [stats, setStats] = useState(null);
-    // const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [species, setSpecies] = useState("");
 
     //data fetched from pokeAPI
     const [availableAbilities, setAvailableAbilities] = useState([]);
     const [availableMoves, setAvailableMoves] = useState([]);
     const [heldItems, setHeldItems] = useState([]);
-    const [species, setSpecies] = useState("");
     const { id} = useParams();
 
 
@@ -65,7 +64,7 @@ const CreateBuild = () => {
     }, [id]);
 
     //fetch pokemon data from pokeAPI
-    const fetchPokemon = async () => {
+    const fetchPokemon = async (species) => {
         if (!species) return;
         try {
             setLoading(true);
@@ -158,17 +157,14 @@ const CreateBuild = () => {
 return (
     <div className="auth-container">
   <div className="auth-card">
-    <h2>Create Pokémon Build</h2>
+    <h2>Edit Pokémon Build</h2>
     <form className="auth-form" onSubmit={handleSubmit}>
       
       <div className="error-message">{error}</div>
 
       <div className="form-group">
-        <label htmlFor="search">Search Species</label>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
-          <input id="search" placeholder="e.g. pikachu" onChange={(e) => setSpecies(e.target.value)} />
-          <button type="button" onClick={fetchPokemon}>Search</button>
-        </div>
+        <label htmlFor="species">Species</label>
+        <input id="species" placeholder="e.g. pikachu" value={species} />
       </div>
 
       <div className="form-group">
@@ -243,4 +239,4 @@ return (
 
 }
 
-export default CreateBuild;
+export default EditBuild;
