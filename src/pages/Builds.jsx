@@ -176,12 +176,12 @@ const Builds = () => {
               </div>
               
               <div className="pokedex-buttons">
-                <button className="edit-button">Edit</button>
+                <Link to={`/builds/${build._id}/edit`} className="edit-button">Edit</Link>
                 <button 
                   className="delete-button" 
                   onClick={() => handleDeleteBuild(build._id)} 
                 >×</button>
-                </div>
+              </div>
               
             </div>
           ))}
