@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import api from "../services/api";
-import "../styles/auth.css"; 
+import "../styles/EditBuild.css"; 
 
 // List of Pokémon natures
 const NATURES = [
@@ -158,6 +158,12 @@ return (
     <div className="auth-container">
   <div className="auth-card">
     <h2>Edit Pokémon Build</h2>
+    <img
+                  className="pokemon-image"
+                  src={`https://img.pokemondb.net/artwork/${species.toLowerCase()}.jpg`}
+                  alt={'image of ' + species}
+                  onError={e => { e.target.onerror = null; e.target.src = '/fallback.svg'; }}
+                />
     <form className="auth-form" onSubmit={handleSubmit}>
       
       <div className="error-message">{error}</div>
