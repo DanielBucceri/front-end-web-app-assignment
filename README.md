@@ -119,7 +119,7 @@ Using the CDN helps keep the app lightweight and still shows visually appealing 
 
   **Personal Note:** Initially used images from PokeAPI, but they didn't render nicely on the page due to white backgrounds not matching the card background. Switching to Pokémon Showdown sprites provided better visual consistency and enhanced the overall user experience.
 
-- **License Note:** While Pokémon Showdown itself is MIT licensed, the licensing for its sprites can be less clear cut due to community contribution. For educational purposes these have been used without permission and should be consdered depending on how this project is used. The primary benefit is access to high-quality, familiar sprites without needing to host them ourselves.
+- **License Note:** While Pokémon Showdown itself is MIT licensed, the licensing for its sprites can be less clear cut due to community contribution. For educational purposes these have been used for educational purposes only locally and should be consdered depending on how this project is used. The primary benefit is access to high-quality, familiar sprites without needing to host them ourselves.
 
 ---
 
