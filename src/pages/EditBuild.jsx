@@ -60,6 +60,7 @@ const EditBuild = () => {
           setLoading(false);
         }
       };
+      
       fetchBuild();
     }, [id]);
 
@@ -212,7 +213,10 @@ return (
         <div id="moves" name="moves" style={{ maxHeight: '150px', maxWidth: '300px', overflow: 'auto', border: '1px solid #ccc', padding: '0.5rem' }}>
           {availableMoves.map((move) => (
             <label key={move} htmlFor={`move-${move}`}>
-              <input id={`move-${move}`} type="checkbox" disabled={moves.length >= 4 && !moves.includes(move)} onChange={(e) => handleMoveToggle(move)} />
+              <input id={`move-${move}`} type="checkbox"
+              checked={moves.includes(move)} 
+              disabled={moves.length >= 4 && !moves.includes(move)}
+              onChange={(e) => handleMoveToggle(move)} />
               {move}
             </label>
           ))}
