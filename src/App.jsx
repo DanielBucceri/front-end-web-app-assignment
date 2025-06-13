@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import AuthProvider from './provider/authProvider'
 import Routes from './routes'
+import ErrorBoundary from './components/ErrorBoundary'
 import './App.css'
 
 function App() {
   return (
     <AuthProvider>
-      <Routes />
+      <ErrorBoundary>
+        <Routes />
+      </ErrorBoundary>
     </AuthProvider>
   )
 }
