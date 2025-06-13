@@ -29,6 +29,13 @@
           "extensions": [".js", ".jsx"]
         }
       }
-    }
+    },
+    "overrides": [
+      {
+        "files": ["vite.config.js"],
+        "rules": {
+          "import/no-extraneous-dependencies": ["error", { "devDependencies": true }]
+        }
+      }
+    ]
   }
-  
