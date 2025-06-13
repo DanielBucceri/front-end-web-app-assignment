@@ -10,6 +10,9 @@ import Dashboard from "../pages/Dashboard";
 import Builds from "../pages/Builds";
 import CreateBuild from "../pages/CreateBuild";
 import EditBuild from "../pages/EditBuild";
+import Teams from "../pages/Teams";
+import EditTeam from "../pages/EditTeam";
+import CreateTeam from "../pages/CreateTeam";
 
 const Routes = () => {
   const { token } = useAuth();
@@ -44,6 +47,9 @@ const Routes = () => {
             { path: "builds", element: <Builds /> },
             { path: "builds/create", element: <CreateBuild /> },
             { path: "builds/:id/edit", element: <EditBuild /> },
+            { path: "teams", element: <Teams /> },
+            { path: "teams/:id/edit", element: <EditTeam /> },
+            { path: "teams/create", element: <CreateTeam /> },
             { path: "logout", element: <Logout /> },
             
           ],
