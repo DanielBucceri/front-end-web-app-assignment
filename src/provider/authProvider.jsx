@@ -30,7 +30,7 @@ const AuthProvider = ({ children }) => {
     const contextValue = useMemo(() => ({
         token,
         setToken,
-        isAuthenticated: getToken() ? true : false,
+        isAuthenticated: !!token,
     }), [token]);
 
     // Provide the context to children components
