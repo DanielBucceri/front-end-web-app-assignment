@@ -1,0 +1,7 @@
+<!-- black and white pokeball image for fallback image -->
+
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="60" cy="60" r="58" fill="#f3f4f6" stroke="#d1d5db" stroke-width="4"/>
+  <circle cx="60" cy="60" r="20" fill="#9ca3af"/>
+  <path d="M2,60 h116" stroke="#d1d5db" stroke-width="4"/>
+</svg>

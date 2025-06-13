@@ -39,7 +39,7 @@ const CreateBuild = () => {
         try {
             setLoading(true);
             setError("");
-            const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${species.toLowerCase()}`);
+            const res = await fetch(`${VITE_POKEMON_API_URL}/${species.toLowerCase()}`);
             if (!res.ok) throw new Error("Pokémon not found!");
             const data = await res.json();
             
