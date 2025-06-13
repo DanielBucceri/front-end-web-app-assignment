@@ -1,0 +1,13 @@
+@import url('./auth.css');
+
+.pokemon-image {
+    width: 100%;
+    height: auto;    
+    max-width: 120px;       
+    width: 100%;                     
+    image-rendering: pixelated; 
+    display: block;        
+    margin: 0 auto;
+}
+
+

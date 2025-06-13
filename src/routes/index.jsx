@@ -9,6 +9,7 @@ import Register from "../pages/Register";
 import Dashboard from "../pages/Dashboard"; 
 import Builds from "../pages/Builds";
 import CreateBuild from "../pages/CreateBuild";
+import EditBuild from "../pages/EditBuild";
 
 const Routes = () => {
   const { token } = useAuth();
@@ -42,6 +43,7 @@ const Routes = () => {
             { path: "dashboard", element: <Dashboard /> },
             { path: "builds", element: <Builds /> },
             { path: "builds/create", element: <CreateBuild /> },
+            { path: "builds/:id/edit", element: <EditBuild /> },
             { path: "logout", element: <Logout /> },
             
           ],

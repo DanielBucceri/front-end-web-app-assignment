@@ -40,6 +40,16 @@
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     overflow: hidden; 
   }
+
+  .pokemon-image {
+    width: 100%;
+    height: auto;    
+    max-width: 120px;       
+    width: 100%;                     
+    image-rendering: pixelated; 
+    display: block;        
+    margin: 0 auto;
+  }
   
   .pokedex-card:hover {
     transform: translateY(-5px);
@@ -132,12 +142,12 @@
   }
   
   /*Color-coded stats */
-  .stat-bar:nth-child(1) .stat-fill { background-color: #f87171; } /* HP  */
-  .stat-bar:nth-child(2) .stat-fill { background-color: #fb923c; } /* ATK  */
-  .stat-bar:nth-child(3) .stat-fill { background-color: #60a5fa; } /* DEF  */
-  .stat-bar:nth-child(4) .stat-fill { background-color: #a78bfa; } /* SP-A  */
-  .stat-bar:nth-child(5) .stat-fill { background-color: #4ade80; } /* SP-D  */
-  .stat-bar:nth-child(6) .stat-fill { background-color: #facc15; } /* SPEED  */
+  .stat-fill-hp { background-color: #f87171; } /* HP  */
+  .stat-fill-attack { background-color: #fb923c; } /* ATK  */
+  .stat-fill-defense { background-color: #60a5fa; } /* DEF  */
+  .stat-fill-special-attack { background-color: #a78bfa; } /* SP-A  */
+  .stat-fill-special-defense { background-color: #4ade80; } /* SP-D  */
+  .stat-fill-speed { background-color: #facc15; } /* SPEED  */
   
   
   /*  Moves  */
@@ -271,3 +281,4 @@
       grid-template-columns: 1fr;
     }
   }
+
