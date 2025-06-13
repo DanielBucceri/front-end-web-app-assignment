@@ -34,10 +34,6 @@ Pokémon Team Builder is a modern, responsive web application enabling users to 
 | **ESLint (Airbnb, plugins)**| Linting, style enforcement, accessibility, React | StandardJS, Prettier | Enforces robust code conventions             | MIT               |
 | **Jest, Testing Library**   | Unit/integration testing for UI & logic          | Vitest, Mocha, Cypress | Popular and well-supported testing tools     | MIT               |
 | **identity-obj-proxy**      | CSS modules mocking for tests                    | N/A                  | Solves CSS imports for Jest                  | MIT               |
-| **react**, **react-dom**    | Core UI and rendering                            |                      |                                            | MIT               |
-| **react-router-dom**        | Routing/Navigating between pages                 |                      |                                            | MIT               |
-| **eslint**, plugins         | Enforce style, a11y, and best practices          |                      |                                            | MIT               |
-| **jest**, **@testing-library/*** | Testing utilities for logic and UI        |                      |                                            | MIT               |
 
 ### System Requirements
 - Compatible with modern desktop and mobile browsers (e.g Chrome, Firefox, Safari).
