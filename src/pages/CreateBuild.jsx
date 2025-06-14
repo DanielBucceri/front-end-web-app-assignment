@@ -23,7 +23,7 @@ const CreateBuild = () => {
     const [ability, setAbility] = useState("");
     const [moves, setMoves] = useState([]);
     const [stats, setStats] = useState(null);
-    // const [search, setSearch] = useState("");
+    const [showImage, setShowImage] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
@@ -48,6 +48,7 @@ const CreateBuild = () => {
             setAvailableAbilities(data.abilities.map((a) => a.ability.name));
             setAvailableMoves(data.moves.map((m) => m.move.name));
             setHeldItems(data.held_items.map((h) => h.item.name));
+            setShowImage(true);
 
             // Map stats to schema
             const statObj = {};
@@ -129,7 +130,14 @@ return (
   <div className="auth-card">
     <h2>Create Pokémon Build</h2>
     <form className="auth-form" onSubmit={handleSubmit}>
-      
+      {showImage && (
+    <div className="pokedex-image-container">
+                <img
+                  className="pokemon-image"
+                  src={`https://play.pokemonshowdown.com/sprites/ani/${species.toLowerCase()}.gif`}
+                  alt={'image of ' + species}/>
+              </div>
+      )}
       <div className="error-message">{error}</div>
 
       <div className="form-group">
