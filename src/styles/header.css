@@ -1,5 +1,6 @@
 .app-header {
   position: fixed;
+  gap: 2rem;
   top: 0;
   left: 0;
   right: 0;
@@ -149,6 +150,7 @@ body {
   }
 
   .hamburger-menu {
+    margin-left: 2.5rem;
     display: flex;
   }
   
@@ -163,13 +165,14 @@ body {
   
   .logo {
     font-size: 1rem;
+    padding-left: 0.5rem;
   }
   
   .logo img {
     width: 32px;
     height: 32px;
   }
-    
+
   
   
   .main-nav a {
