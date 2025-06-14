@@ -176,7 +176,7 @@ return (
 
       <div className="form-group">
         <label htmlFor="species">Species</label>
-        <input id="species" placeholder="e.g. pikachu" value={species} />
+        <input id="species" placeholder="e.g. pikachu" value={species} onChange={(e) => setSpecies(e.target.value)} />
       </div>
 
       <div className="form-group">
