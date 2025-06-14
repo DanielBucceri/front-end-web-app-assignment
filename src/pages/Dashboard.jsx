@@ -15,7 +15,7 @@ const Dashboard = () => {
       setLoading(true);
       setError(null);
       
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${getRandomPokemonId()}`);
+      const response = await fetch(`${import.meta.env.VITE_POKEMON_API_URL}/${getRandomPokemonId()}`);
       if (!response.ok) throw new Error('Failed to fetch Pokémon');
       
       const data = await response.json();
