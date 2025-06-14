@@ -79,6 +79,7 @@ const EditBuild = () => {
             setAvailableAbilities(data.abilities.map((a) => a.ability.name));
             setAvailableMoves(data.moves.map((m) => m.move.name));
             setHeldItems(data.held_items.map((h) => h.item.name));
+            setShowImage(true);
 
             // Map stats to schema
             const statObj = {};
@@ -161,11 +162,13 @@ return (
   <div className="auth-card">
     <h2>Edit {nickname}</h2>
     <form className="auth-form" onSubmit={handleSubmit}>
+    {showImage && (
     <img
         className="pokemon-image"
         src={`https://play.pokemonshowdown.com/sprites/ani/${species.toLowerCase()}.gif`}
         alt={'image of ' + species}        
         ></img>
+    )}
       <div className="error-message">{error}</div>
 
       <div className="form-group">
