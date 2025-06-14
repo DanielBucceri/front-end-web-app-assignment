@@ -24,6 +24,7 @@ const CreateBuild = () => {
     const [moves, setMoves] = useState([]);
     const [stats, setStats] = useState(null);
     const [showImage, setShowImage] = useState(false);
+    const [spriteUrl, setSpriteUrl] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
@@ -48,7 +49,9 @@ const CreateBuild = () => {
             setAvailableAbilities(data.abilities.map((a) => a.ability.name));
             setAvailableMoves(data.moves.map((m) => m.move.name));
             setHeldItems(data.held_items.map((h) => h.item.name));
+            setSpriteUrl(data.sprites.other.showdown.front_default);
             setShowImage(true);
+
 
             // Map stats to schema
             const statObj = {};
@@ -134,7 +137,7 @@ return (
     <div className="pokedex-image-container">
                 <img
                   className="pokemon-image"
-                  src={`https://play.pokemonshowdown.com/sprites/ani/${species.toLowerCase()}.gif`}
+                  src={spriteUrl}
                   alt={'image of ' + species}/>
               </div>
       )}
