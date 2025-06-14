@@ -144,7 +144,6 @@ body {
   }
 
   .main-nav.mobile-menu-active ul.menu-open li a {
-    padding: 0.75rem 1rem;
     display: block;
     width: 100%;
   }
