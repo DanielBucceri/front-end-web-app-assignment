@@ -47,7 +47,7 @@ const CreateBuild = () => {
             //set returned pokemon data
             setSpecies(data.species.name);
             setAvailableAbilities(data.abilities.map((a) => a.ability.name));
-            setAvailableMoves(data.moves.map((m) => m.move.name));
+            setAvailableMoves(data.moves.map((m) => m.move.name).sort());
             setHeldItems(data.held_items.map((h) => h.item.name));
             setSpriteUrl(data.sprites.other.showdown.front_default);
             setShowImage(true);
