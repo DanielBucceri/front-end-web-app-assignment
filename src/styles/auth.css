@@ -40,21 +40,18 @@
   font-size: 1rem;
 }
 
-.form-group input {
-  padding: 0.75rem;
-  border: 2px solid #e1e5e9;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
+.form-group input,
 .form-group select {
   padding: 0.75rem;
   border: 2px solid #e1e5e9;
   border-radius: 6px;
   font-size: 1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
+
+
 
 
 .submit-button {
@@ -88,6 +85,17 @@
 
 .error-message {
   color: red;
+}
+
+.search-input-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.search-input-container input {
+  flex: 1;
+  min-width: 0;
 }
 
 /* Responsive */

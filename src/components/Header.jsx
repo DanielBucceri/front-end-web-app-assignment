@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { useAuth } from "../provider/authProvider";
 import "../styles/header.css";
 
 const Header = () => {
   const { token } = useAuth();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
   
   return (
     <header className="app-header">
@@ -12,8 +18,13 @@ const Header = () => {
         <span>Pokémon Team Builder</span>
       </div>
       
-      <nav className="main-nav">
-        <ul>
+      <button className="hamburger-menu" onClick={toggleMenu} aria-label="Toggle menu" aria-expanded={isMenuOpen}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav className={`main-nav ${isMenuOpen ? 'mobile-menu-active' : ''}`}>
+        <ul className={isMenuOpen ? 'menu-open' : ''}>
           <li><Link to="/dashboard">Dashboard</Link></li>
           <li><Link to="/teams">Teams</Link></li>
           <li><Link to="/builds">Builds</Link></li>

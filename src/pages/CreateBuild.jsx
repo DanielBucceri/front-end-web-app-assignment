@@ -134,7 +134,7 @@ return (
 
       <div className="form-group">
         <label htmlFor="search">Search Species</label>
-        <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <div className="search-input-container">
           <input id="search" placeholder="e.g. pikachu" onChange={(e) => setSpecies(e.target.value)} />
           <button type="button" onClick={fetchPokemon}>Search</button>
         </div>
@@ -177,7 +177,7 @@ return (
 
       <div className="form-group">
         <p className="form-group-label">Moves (max 4) *</p>
-        <div id="moves" name="moves" style={{ maxHeight: '150px', maxWidth: '300px', overflow: 'auto', border: '1px solid #ccc', padding: '0.5rem' }}>
+        <div id="moves" name="moves" style={{ maxHeight: '150px', maxWidth: '100%', boxSizing: 'border-box', overflow: 'auto', border: '1px solid #ccc', padding: '0.5rem' }}>
           {availableMoves.map((move) => (
             <label key={move} htmlFor={`move-${move}`}>
               <input id={`move-${move}`} type="checkbox" disabled={moves.length >= 4 && !moves.includes(move)} onChange={(e) => handleMoveToggle(move)} />
