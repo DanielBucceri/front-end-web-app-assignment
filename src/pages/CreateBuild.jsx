@@ -184,7 +184,7 @@ return (
       </div>
 
       <div className="form-group">
-        <p className="form-group-label">Moves (max 4) *</p>
+        <label className="form-group-label">Moves (max 4) *</label>
         <div id="moves" name="moves" style={{ maxHeight: '150px', maxWidth: '100%', boxSizing: 'border-box', overflow: 'auto', border: '1px solid #ccc', padding: '0.5rem' }}>
           {availableMoves.map((move) => (
             <label key={move} htmlFor={`move-${move}`}>
@@ -196,7 +196,7 @@ return (
       </div>
 
       <div className="form-group">
-        <p className="form-group-label">Base Stats</p>
+        <label className="form-group-label">Base Stats</label>
         <ul id="stats" name="stats" style={{ listStyle: 'none', padding: '0' }}>
           <li>HP: {stats?.hp}</li>
           <li>Attack: {stats?.attack}</li>

@@ -52,6 +52,15 @@
 }
 
 
+#moves input {
+margin-left: 0;
+  width: 20%;
+}
+
+#moves label {
+  display: flex;
+  align-items: center;
+}
 
 
 .submit-button {
@@ -107,4 +116,10 @@
   .auth-container {
     padding: 1rem;
   }
+
+  #moves label {
+    display: flex; 
+    align-items: center; 
+    }
+
 }
