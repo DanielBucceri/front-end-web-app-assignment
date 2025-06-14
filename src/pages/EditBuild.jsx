@@ -70,7 +70,7 @@ const EditBuild = () => {
         try {
             setLoading(true);
             setError("");
-            const res = await fetch(`${VITE_POKEMON_API_URL}/${species.toLowerCase()}`);
+            const res = await fetch(`${import.meta.env.VITE_POKEMON_API_URL}/${species.toLowerCase()}`);
             if (!res.ok) throw new Error("Pokémon not found!");
             const data = await res.json();
             
