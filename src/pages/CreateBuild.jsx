@@ -131,7 +131,14 @@ const CreateBuild = () => {
 return (
     <div className="auth-container">
   <div className="auth-card">
-    <h2>Create Pokémon Build</h2>
+    <h2>Create a New Build</h2>
+    {showImage && (
+      <img
+        className="pokemon-image"
+        src={spriteUrl}
+        alt={'image of ' + species}
+      />
+    )}
     <form className="auth-form" onSubmit={handleSubmit}>
       {showImage && (
     <div className="pokedex-image-container">
