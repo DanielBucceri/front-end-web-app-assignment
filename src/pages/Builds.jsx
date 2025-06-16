@@ -107,6 +107,13 @@ const Builds = () => {
               <div className="pokedex-info">
                 <h3 className="pokemon-nickname">{build.nickname || 'Unnamed Build'}</h3>
                 <h4 className="pokemon-species">{capitalize(build.species)}</h4>
+                <div className="card-types-container">
+                  {build.pokemonTypes && build.pokemonTypes.map(type => (
+                    <span key={type} className={`type-badge ${type}`}>
+                      {capitalize(type)}
+                    </span>
+                  ))}
+                </div>
                 
                 <div className="pokedex-details">
                   <div className="pokedex-types"> 
