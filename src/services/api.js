@@ -19,6 +19,7 @@ api.interceptors.request.use((config) => {
 
   return updatedConfig;
 });
+
 // Add a response interceptor to handle auth errors
 api.interceptors.response.use(
   (response) => response, // Directly return a successful response
@@ -31,7 +32,7 @@ api.interceptors.response.use(
         window.location.href = '/login';
       }
     }
-    return Promise.reject(error); // Send it back to the code that claled this 
+    return Promise.reject(error); // Send it back to the code that called this 
   }
 );
 

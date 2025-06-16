@@ -28,6 +28,7 @@ const EditBuild = () => {
     const [species, setSpecies] = useState("");
     const [spriteUrl, setSpriteUrl] = useState(null);
     const [showImage, setShowImage] = useState(false);
+    const [types, setTypes] = useState([]);
 
     //data fetched from pokeAPI
     const [availableAbilities, setAvailableAbilities] = useState([]);
@@ -83,6 +84,7 @@ const EditBuild = () => {
             setHeldItems(data.held_items.map((h) => h.item.name));
             setShowImage(true);
             setSpriteUrl(data.sprites.other.showdown.front_default)
+            setTypes(data.types.map((t) => t.type.name));
 
             // Map stats to schema
             const statObj = {};
@@ -173,7 +175,13 @@ return (
         ></img>
     )}
       <div className="error-message">{error}</div>
-
+      <div className="pokemon-types">
+                  {types.map(type => (
+                    <span key={type} className={`type-badge ${type}`}>
+                      {type}
+                    </span>
+                  ))}
+                </div>
       <div className="form-group">
         <label htmlFor="species">Species</label>
         <input id="species" placeholder="e.g. pikachu" value={species} onChange={(e) => setSpecies(e.target.value)} />
@@ -183,7 +191,6 @@ return (
         <label htmlFor="nickname">Nickname</label>
         <input id="nickname" name="nickname" placeholder="Optional" value={nickname} onChange={(e) => setNickname(e.target.value)}/>
       </div>
-
       <div className="form-group">
         <label htmlFor="nature">Nature *</label>
         <select id="nature" name="nature" required value={nature} onChange={(e) => setNature(e.target.value)}>

@@ -27,6 +27,7 @@ const CreateBuild = () => {
     const [spriteUrl, setSpriteUrl] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [types, setTypes] = useState([]);
 
     //data fetched from pokeAPI
     const [availableAbilities, setAvailableAbilities] = useState([]);
@@ -51,6 +52,7 @@ const CreateBuild = () => {
             setHeldItems(data.held_items.map((h) => h.item.name));
             setSpriteUrl(data.sprites.other.showdown.front_default);
             setShowImage(true);
+            setTypes(data.types.map((t) => t.type.name));
 
 
             // Map stats to schema
@@ -141,6 +143,13 @@ return (
         />
       </div>
     )}
+    <div className="pokemon-types">
+                  {types.map(type => (
+                    <span key={type} className={`type-badge ${type}`}>
+                      {type}
+                    </span>
+                  ))}
+                </div>
     <form className="auth-form" onSubmit={handleSubmit}>
       <div className="error-message">{error}</div>
 

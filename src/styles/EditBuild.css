@@ -1,4 +1,5 @@
-@import url('./auth.css');
+@import url('./cards.css');
+@import url('./Builds.css');
 
 .pokemon-image {
     width: 100%;
@@ -8,6 +9,7 @@
     image-rendering: pixelated; 
     display: block;        
     margin: 0 auto;
+    padding-bottom: 1rem;
 }
 
 
