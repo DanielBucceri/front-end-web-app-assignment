@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import api from "../services/api";
 import "../styles/CreateBuild.css"; 
@@ -28,7 +28,7 @@ const CreateBuild = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [types, setTypes] = useState([]);
-
+    const [displayStats, setDisplayStats] = useState([]);
     //data fetched from pokeAPI
     const [availableAbilities, setAvailableAbilities] = useState([]);
     const [availableMoves, setAvailableMoves] = useState([]);
@@ -53,6 +53,7 @@ const CreateBuild = () => {
             setSpriteUrl(data.sprites.other.showdown.front_default);
             setShowImage(true);
             setTypes(data.types.map((t) => t.type.name));
+            setDisplayStats(data.stats);
 
 
             // Map stats to schema
@@ -118,7 +119,8 @@ const CreateBuild = () => {
             item,
             ability,
             moves,
-            stats
+            stats,
+            pokemonTypes: types
           });
           
           // Redirect to builds page
@@ -208,50 +210,20 @@ return (
         </div>
       </div>
 
-      <div className="pokedex-stats">
-        <div className="stat-bar">
-          <span className="stat-label">HP</span>
-          <div className="stat-bar-container">
-            <div className="stat-fill stat-fill-hp" style={{width: `${stats?.hp ? (stats.hp / 255) * 100 : 0}%`}}></div>
-            <span className="stat-value">{stats?.hp}</span>
-          </div>
-        </div>
-        <div className="stat-bar">
-          <span className="stat-label">ATK</span>
-          <div className="stat-bar-container">
-            <div className="stat-fill stat-fill-attack" style={{width: `${stats?.attack ? (stats.attack / 255) * 100 : 0}%`}}></div>
-            <span className="stat-value">{stats?.attack}</span>
-          </div>
-        </div>
-        <div className="stat-bar">
-          <span className="stat-label">DEF</span>
-          <div className="stat-bar-container">
-            <div className="stat-fill stat-fill-defense" style={{width: `${stats?.defense ? (stats.defense / 255) * 100 : 0}%`}}></div>
-            <span className="stat-value">{stats?.defense}</span>
-          </div>
-        </div>
-        <div className="stat-bar">
-          <span className="stat-label">SP-A</span>
-          <div className="stat-bar-container">
-            <div className="stat-fill stat-fill-special-attack" style={{width: `${stats?.specialAttack ? (stats.specialAttack / 255) * 100 : 0}%`}}></div>
-            <span className="stat-value">{stats?.specialAttack}</span>
-          </div>
-        </div>
-        <div className="stat-bar">
-          <span className="stat-label">SP-D</span>
-          <div className="stat-bar-container">
-            <div className="stat-fill stat-fill-special-defense" style={{width: `${stats?.specialDefense ? (stats.specialDefense / 255) * 100 : 0}%`}}></div>
-            <span className="stat-value">{stats?.specialDefense}</span>
-          </div>
-        </div>
-        <div className="stat-bar">
-          <span className="stat-label">SPEED</span>
-          <div className="stat-bar-container">
-            <div className="stat-fill stat-fill-speed" style={{width: `${stats?.speed ? (stats.speed / 255) * 100 : 0}%`}}></div>
-            <span className="stat-value">{stats?.speed}</span>
-          </div>
-        </div>
-      </div>
+      <div className="pokemon-stats">
+                  {displayStats.map(stat => (
+                    <div key={stat.name} className="stat-bar">
+                      <span className={"stat-name"}>{stat.stat.name}:</span>
+                      <div className="stat-bar-container">
+                        <div 
+                          className={`stat-fill stat-fill-${stat.stat.name}`} 
+                          style={{ width: `${(stat.base_stat / 255) * 100}%` }}
+                        ></div>
+                      </div>
+                      <span className="stat-value">{stat.base_stat}</span>
+                    </div>
+                  ))}
+                </div>
 
       <button type="submit" className="submit-button">Save Build</button>
     </form>

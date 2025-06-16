@@ -22,7 +22,8 @@ const EditBuild = () => {
     const [item, setItem] = useState("");
     const [ability, setAbility] = useState("");
     const [moves, setMoves] = useState([]);
-    const [stats, setStats] = useState(null);
+    const [stats, setStats] = useState(null); // object used for backend submission
+  const [displayStats, setDisplayStats] = useState([]); // array for rendering stat bars
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [species, setSpecies] = useState("");
@@ -114,6 +115,7 @@ const EditBuild = () => {
       });
 
       setStats(statObj);
+      setDisplayStats(data.stats);
     } catch (e) {
       setError(e.message);
     } finally {
@@ -150,7 +152,9 @@ const EditBuild = () => {
             item,
             ability,
             moves,
-            stats
+            stats,
+            pokemonTypes: types
+            
           });
           
           // Redirect to builds page
@@ -166,22 +170,24 @@ return (
     <div className="auth-container">
   <div className="auth-card">
     <h2>Edit {nickname}</h2>
-    <form className="auth-form" onSubmit={handleSubmit}>
     {showImage && (
+    <div className="pokedex-image-container">
     <img
-        className="pokemon-image"
-        src={spriteUrl}
-        alt={'image of ' + species}        
-        ></img>
+      className="pokemon-image"
+      src={spriteUrl}
+      alt={'image of ' + species}
+    />
+  </div>
     )}
-      <div className="error-message">{error}</div>
-      <div className="pokemon-types">
-                  {types.map(type => (
-                    <span key={type} className={`type-badge ${type}`}>
-                      {type}
-                    </span>
-                  ))}
-                </div>
+  <div className="pokemon-types">
+          {types.map(type => (
+            <span key={type} className={`type-badge ${type}`}>
+              {type}
+            </span>
+          ))}
+        </div>
+    <form className="auth-form" onSubmit={handleSubmit}>
+        <div className="error-message">{error}</div>
       <div className="form-group">
         <label htmlFor="species">Species</label>
         <input id="species" placeholder="e.g. pikachu" value={species} onChange={(e) => setSpecies(e.target.value)} />
@@ -235,51 +241,20 @@ return (
           ))}
         </div>
       </div>
-
-      <div className="pokedex-stats">
-                  <div className="stat-bar">
-                    <span className="stat-label">HP</span>
-                    <div className="stat-bar-container">
-                      <div className="stat-fill stat-fill-hp" style={{width: `${(stats?.hp / 255) * 100}%`}}></div>
-                      <span className="stat-value">{stats?.hp}</span>
-                    </div>
-                  </div>
-                  <div className="stat-bar">
-                    <span className="stat-label">ATK</span>
-                    <div className="stat-bar-container">
-                      <div className="stat-fill stat-fill-attack" style={{width: `${(stats?.attack / 255) * 100}%`}}></div>
-                      <span className="stat-value">{stats?.attack}</span>
-                    </div>
-                  </div>
-                  <div className="stat-bar">
-                    <span className="stat-label">DEF</span>
-                    <div className="stat-bar-container">
-                      <div className="stat-fill stat-fill-defense" style={{width: `${(stats?.defense / 255) * 100}%`}}></div>
-                      <span className="stat-value">{stats?.defense}</span>
-                    </div>
-                  </div>
-                    <div className="stat-bar">
-                      <span className="stat-label">SP-A</span>
+      <div className="pokemon-stats">
+                  {displayStats.map(stat => (
+                    <div key={stat.name} className="stat-bar">
+                      <span className={"stat-name"}>{stat.stat.name}:</span>
                       <div className="stat-bar-container">
-                        <div className="stat-fill stat-fill-special-attack" style={{width: `${(stats?.specialAttack / 255) * 100}%`}}></div>
-                        <span className="stat-value">{stats?.specialAttack}</span>
+                        <div 
+                          className={`stat-fill stat-fill-${stat.stat.name}`} 
+                          style={{ width: `${(stat.base_stat / 255) * 100}%` }}
+                        ></div>
                       </div>
+                      <span className="stat-value">{stat.base_stat}</span>
                     </div>
-                    <div className="stat-bar">
-                      <span className="stat-label">SP-D</span>
-                      <div className="stat-bar-container">
-                        <div className="stat-fill stat-fill-special-defense" style={{width: `${(stats?.specialDefense / 255) * 100}%`}}></div>
-                        <span className="stat-value">{stats?.specialDefense}</span>
-                      </div>
-                    </div>
-                    <div className="stat-bar">
-                      <span className="stat-label">SPEED</span>
-                      <div className="stat-bar-container">
-                        <div className="stat-fill stat-fill-speed" style={{width: `${(stats?.speed / 255) * 100}%`}}></div>
-                        <span className="stat-value">{stats?.speed}</span>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
+                </div>
       <button type="submit" className="submit-button">Save Build</button>
     </form>
 
