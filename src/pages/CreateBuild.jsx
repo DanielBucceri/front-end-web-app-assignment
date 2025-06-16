@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../provider/authProvider";
 import api from "../services/api";
-import "../styles/auth.css"; 
+import "../styles/CreateBuild.css"; 
 
 // List of Pokémon natures
 const NATURES = [
@@ -198,16 +198,49 @@ return (
         </div>
       </div>
 
-      <div className="form-group">
-        <label className="form-group-label">Base Stats</label>
-        <ul id="stats" name="stats" style={{ listStyle: 'none', padding: '0' }}>
-          <li>HP: {stats?.hp}</li>
-          <li>Attack: {stats?.attack}</li>
-          <li>Defense: {stats?.defense}</li>
-          <li>Sp. Atk: {stats?.specialAttack}</li>
-          <li>Sp. Def: {stats?.specialDefense}</li>
-          <li>Speed: {stats?.speed}</li>
-        </ul>
+      <div className="pokedex-stats">
+        <div className="stat-bar">
+          <span className="stat-label">HP</span>
+          <div className="stat-bar-container">
+            <div className="stat-fill stat-fill-hp" style={{width: `${stats?.hp ? (stats.hp / 255) * 100 : 0}%`}}></div>
+            <span className="stat-value">{stats?.hp}</span>
+          </div>
+        </div>
+        <div className="stat-bar">
+          <span className="stat-label">ATK</span>
+          <div className="stat-bar-container">
+            <div className="stat-fill stat-fill-attack" style={{width: `${stats?.attack ? (stats.attack / 255) * 100 : 0}%`}}></div>
+            <span className="stat-value">{stats?.attack}</span>
+          </div>
+        </div>
+        <div className="stat-bar">
+          <span className="stat-label">DEF</span>
+          <div className="stat-bar-container">
+            <div className="stat-fill stat-fill-defense" style={{width: `${stats?.defense ? (stats.defense / 255) * 100 : 0}%`}}></div>
+            <span className="stat-value">{stats?.defense}</span>
+          </div>
+        </div>
+        <div className="stat-bar">
+          <span className="stat-label">SP-A</span>
+          <div className="stat-bar-container">
+            <div className="stat-fill stat-fill-special-attack" style={{width: `${stats?.specialAttack ? (stats.specialAttack / 255) * 100 : 0}%`}}></div>
+            <span className="stat-value">{stats?.specialAttack}</span>
+          </div>
+        </div>
+        <div className="stat-bar">
+          <span className="stat-label">SP-D</span>
+          <div className="stat-bar-container">
+            <div className="stat-fill stat-fill-special-defense" style={{width: `${stats?.specialDefense ? (stats.specialDefense / 255) * 100 : 0}%`}}></div>
+            <span className="stat-value">{stats?.specialDefense}</span>
+          </div>
+        </div>
+        <div className="stat-bar">
+          <span className="stat-label">SPEED</span>
+          <div className="stat-bar-container">
+            <div className="stat-fill stat-fill-speed" style={{width: `${stats?.speed ? (stats.speed / 255) * 100 : 0}%`}}></div>
+            <span className="stat-value">{stats?.speed}</span>
+          </div>
+        </div>
       </div>
 
       <button type="submit" className="submit-button">Save Build</button>
