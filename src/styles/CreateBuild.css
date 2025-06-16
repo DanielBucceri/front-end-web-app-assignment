@@ -1,6 +1,10 @@
 @import url('./auth.css');
 @import url('./Builds.css');
 
+.auth-card .pokedex-image-container {
+    border-bottom: none;
+}
+
 .pokemon-image {
     width: 100%;
     height: auto;    
