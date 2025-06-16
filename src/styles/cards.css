@@ -111,6 +111,7 @@ margin-left: 0;
 @media (max-width: 640px) {
   .auth-card {
     padding: 1rem;
+    width: 100%;
   }
   
   .auth-container {
